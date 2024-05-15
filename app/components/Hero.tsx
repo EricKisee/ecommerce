@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { client, urlFor } from "../lib/sanity";
+import Link from "next/link";
 
 async function getData(){
     const query = ` *[ _type=="heroImage"][0]`
@@ -28,6 +29,7 @@ export default async function Hero (){
                             src={urlFor(data.image2).url()}
                             alt="Hero Image"
                             className="h-full w-full object-cover object-center"
+                            priority
                         />
                     </div>
                     <div className="overflow-hidden rounded-lg bg-gray-100 shadow-lg ">
@@ -37,8 +39,23 @@ export default async function Hero (){
                             src={urlFor(data.image1).url()}
                             alt="Hero Image"
                             className="h-full w-full object-cover object-center"
+                            priority
                         />
                     </div>
+                </div>
+            </div>
+
+            <div className=" flex flex-col item-center justify-between gap-8 md:flex-row">
+                <div className=" flex h-12 w-64 divide-x overflow-hidden rounded-lg border">
+                    <Link href="/Men" className="flex w-1/3 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200">
+                        Men
+                    </Link>
+                    <Link href="/Women" className="flex w-1/3 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200">
+                        Women
+                    </Link>
+                    <Link href="/Teens" className="flex w-1/3 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200">
+                        Teens
+                    </Link>
                 </div>
             </div>
         </section>
